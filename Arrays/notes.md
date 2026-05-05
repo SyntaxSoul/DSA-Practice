@@ -54,3 +54,21 @@ Key Insights:
 
 Time: O(n²)
 Space: O(n²)
+
+## LC-119: Pascal's Triangle II
+
+[LC-119 Solution](./LC-118-PascalsTriangleII.java)
+
+Pattern:
+- Dynamic Programming (Build from previous state)
+
+Mistake:
+- Initially thought full triangle is required (but only one row is needed)
+
+Key Insights:
+- Only previous row is needed to compute current row
+- First and last elements are always 1
+- Reuse a single list (`prev`) and update it for each row
+
+Time: O(n²)
+Space: O(n) 
