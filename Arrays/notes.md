@@ -34,3 +34,23 @@ Key Insight:
 
 Time: O(n)
 Space: O(log n)  // recursion stack
+
+## LC-118: Pascal's Triangle
+
+[LC-118 Solution](./LC-118-PascalsTriangle.java)
+
+Pattern:
+- Dynamic Programming (Build from previous state)
+
+Mistake:
+- Incorrect syntax
+- Missing return statement
+- Treated list like a 2D array instead of building row by row
+
+Key Insights:
+- First and last elements of each row are always 1
+- Each inner element = sum of two elements from previous row
+- Create a new row each time and append it to the main list
+
+Time: O(n²)
+Space: O(n²)
