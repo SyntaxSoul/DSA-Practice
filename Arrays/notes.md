@@ -92,3 +92,30 @@ Key Insights:
 
 Time: O(n)
 Space: O(1)
+
+## LC-136: Single Number
+
+[Solution](./LC-136-SingleNumber.java)
+
+Pattern:
+- Bit Manipulation (XOR)
+
+Mistake:
+- Initially thought it was a hashing/frequency-counting problem
+
+Key Insights:
+- XOR cancels out repeating elements
+- Even occurrences become 0
+- Only the unique element survives
+- XOR works regardless of element order
+
+Mental Model:
+- XOR behaves like toggle switches
+- First occurrence → ON
+- Second occurrence → OFF
+
+Trigger:
+- Every element appears twice except one
+
+Time: O(n)
+Space: O(1)
