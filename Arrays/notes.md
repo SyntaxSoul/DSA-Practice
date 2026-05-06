@@ -72,3 +72,23 @@ Key Insights:
 
 Time: O(n²)
 Space: O(n) 
+
+## LC-121: Best Time to Buy and Sell Stock
+
+[Solution](./LC-121-BestTimeToBuyAndSellStock.java)
+
+Pattern:
+- Single traversal
+- Running minimum tracking
+- Greedy traversal
+
+Mistake:
+- Initially thought it was a two-pointer approach
+
+Key Insights:
+- Maintain the minimum price seen so far
+- Calculate current profit dynamically
+- Update maximum profit continuously
+
+Time: O(n)
+Space: O(1)
