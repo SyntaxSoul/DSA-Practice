@@ -119,3 +119,30 @@ Trigger:
 
 Time: O(n)
 Space: O(1)
+
+## LC-169: Majority Element
+
+[Solution](./LC-169-MajorityElement.java)
+
+Pattern:
+- Boyer-Moore Voting Algorithm
+
+Mistake:
+- Initially thought there would only be two different candidates in the array
+
+Key Insights:
+- When count becomes 0, choose the current element as the new candidate
+- If the same candidate appears, increase count
+- If a different element appears, decrease count
+
+Mental Model:
+- Candidate gains support when repeated
+- Different elements cancel support
+- Majority element survives all cancellations
+
+Trigger:
+- One element appears more than n/2 times
+- Majority element can cancel out all other elements combined
+
+Time: O(n)
+Space: O(1)
