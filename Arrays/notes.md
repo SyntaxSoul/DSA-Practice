@@ -146,3 +146,29 @@ Trigger:
 
 Time: O(n)
 Space: O(1)
+
+## LC-217: Contains Duplicate
+
+[Solution](./LC-217-ContainsDuplicate.java)
+
+Pattern:
+- Hashing (HashSet)
+
+Mistake:
+- Initially thought of using brute force → O(n²)
+- Later considered HashMap, but realized key-value storage was unnecessary for this problem
+
+Key Insights:
+- Need memory of previously seen elements to detect duplicates efficiently
+- Faster lookup requires extra space
+
+Mental Model:
+- HashSet stores only unique elements
+- If an element already exists in the set, a duplicate is found
+
+Trigger:
+- Detect duplicates quickly
+- Check whether an element has been seen before
+
+Time: O(n)
+Space: O(n)
