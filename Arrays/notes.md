@@ -260,3 +260,32 @@ Trigger:
 
 Time: O(n)
 Space: O(1)
+
+## LC-283: Move Zeroes
+
+[Solution](./LC-283-MoveZeroes.java)
+
+Pattern:
+- Two Pointers (Slow-Fast / Overwrite-Compaction)
+
+Mistake:
+- Initially added unnecessary conditions to update i when encountering zeroes
+
+Key Insights:
+- Non-zero elements should be compacted toward the left
+- Zeroes naturally move toward the end during swaps
+- Maintaining a clean write position simplifies logic
+
+Mental Model:
+- i = next position to place a non-zero element
+- j = traversal pointer
+- Swap when nums[j] is non-zero
+- Preserve relative order by processing elements left → right
+
+Trigger:
+- Move/filter elements in-place
+- Preserve relative order
+- Compact valid elements toward one side
+
+Time: O(n)
+Space: O(1)
