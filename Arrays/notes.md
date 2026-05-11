@@ -172,3 +172,31 @@ Trigger:
 
 Time: O(n)
 Space: O(n)
+
+## LC-219: Contains Duplicate II
+
+[Solution](./LC-219-ContainsDuplicateII.java)
+
+Pattern:
+- Hashing (HashMap)
+
+Mistake:
+- Initially forgot to update the latest index of a duplicate element when the index difference was greater than k
+
+Key Insights:
+- Need memory of previously seen elements and their indices
+- Store the latest index for accurate distance checking
+
+Mental Model:
+- HashMap stores:
+  value → latest index
+- containsKey() helps detect previously seen elements quickly
+- Updating the index prevents stale distance calculations
+
+Trigger:
+- Detect duplicates quickly
+- Need index/distance tracking
+- Check whether the difference between indices is <= k
+
+Time: O(n)
+Space: O(n)
