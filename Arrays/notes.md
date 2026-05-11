@@ -200,3 +200,34 @@ Trigger:
 
 Time: O(n)
 Space: O(n)
+
+## LC-228: Summary Ranges
+
+[Solution](./LC-228-SummaryRanges.java)
+
+Pattern:
+- Range Building / Interval Traversal
+
+Mistake:
+- Initially thought it was a brute-force problem
+- Tried handling remaining/final elements inside the loop instead of after traversal
+
+Key Insights:
+- Need to track the start of the current range
+- A range ends when consecutive numbers break
+- Final remaining range should be handled after traversal
+
+Mental Model:
+- start stores the beginning of the active range
+- Continue the range while next element is consecutive
+- Close the range when continuity breaks
+- Single-element ranges should be added separately
+- Move start to the beginning of the next range
+
+Trigger:
+- Consecutive elements
+- Group continuous ranges
+- Summarize intervals in sorted data
+
+Time: O(n)
+Space: O(n)
