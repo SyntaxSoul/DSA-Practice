@@ -231,3 +231,32 @@ Trigger:
 
 Time: O(n)
 Space: O(n)
+
+## LC-268: Missing Number
+
+[Solution](./LC-268-MissingNumber.java)
+
+Pattern:
+- Mathematical Summation
+- XOR (alternative approach)
+
+Mistake:
+- Unable to recall the summation formula initially
+
+Key Insights:
+- Numbers are in the range [0, n]
+- Compute expected sum using mathematical formula
+- Compute actual sum of array elements
+- Difference between expected and actual sum gives the missing number
+
+Mental Model:
+- Expected sum = sum of complete range [0, n]
+- Actual sum = sum of given array
+- Missing number = expected sum - actual sum
+
+Trigger:
+- Complete range with one missing element
+- Need missing value from known total/range
+
+Time: O(n)
+Space: O(1)
