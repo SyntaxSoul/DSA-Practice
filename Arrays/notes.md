@@ -325,3 +325,33 @@ Time:
 
 Space:
 - O(n)
+
+## LC-349: Intersection of Two Arrays
+
+[Solution](./LC-349-IntersectionOfTwoArrays.java)
+
+Pattern:
+- Hashing (HashSet)
+
+Mistake:
+- Didn’t know how to convert Set<Integer> to int[]
+
+Key Insights:
+- set1 stores all unique elements from nums1
+- set2 stores only unique intersection elements
+- HashSet provides fast existence lookup
+
+Mental Model:
+- set1 = memory of elements from nums1
+- While traversing nums2:
+  - if element exists in set1
+  - add it to set2
+- set2 automatically avoids duplicates
+
+Trigger:
+- Need fast existence lookup
+- Need unique elements
+- Find common/intersection elements
+
+Time: O(n + m)
+Space: O(n + m)
