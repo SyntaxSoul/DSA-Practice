@@ -289,3 +289,39 @@ Trigger:
 
 Time: O(n)
 Space: O(1)
+
+## LC-303: Range Sum Query - Immutable
+
+[Solution](./LC-303-RangeSumQueryImmutable.java)
+
+Pattern:
+- Prefix Sum
+- Preprocessing
+
+Mistake:
+- Initially solved each query independently using traversal
+- Later computed prefix sum inside sumRange(), which rebuilt the prefix array for every query
+- Missed the main idea of preprocessing once and reusing later
+
+Key Insights:
+- Prefix sum stores cumulative sums
+- Precompute prefix sums once in constructor
+- Range sum can be calculated using subtraction
+
+Mental Model:
+- prefix[i] stores sum from index 0 to i
+- To find sum from left to right:
+  prefix[right] - prefix[left - 1]
+- Subtract unwanted prefix portion
+
+Trigger:
+- Multiple range sum queries
+- Repeated calculations on same array
+- Precompute once and reuse
+
+Time:
+- Constructor: O(n)
+- sumRange(): O(1)
+
+Space:
+- O(n)
