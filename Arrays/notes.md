@@ -424,3 +424,40 @@ Trigger:
 
 Time: O(n)
 Space: O(1)
+
+## LC-448: Find All Numbers Disappeared in an Array
+
+[Solution](./LC-448-FindAllNumbersDisappearedInAnArray.java)
+
+Pattern:
+- Cyclic Sort
+- Array Traversal
+- In-place Index Placement
+
+Mistakes:
+- First thought was to use a HashSet, but realized the follow-up required O(1) extra space.
+- Tried swapping elements only once using a `for` loop, which failed because a swapped element may also be in the wrong position.
+- Initially thought arranging the array would directly give the answer and didn't realize a second traversal is required to identify missing numbers.
+- Learned that duplicates prevent every number from reaching its correct index, leaving mismatched indices that reveal the missing numbers.
+
+Key Insights:
+- Every number belongs to index `value - 1`.
+- Continue swapping until the current number is either:
+  - at its correct index, or
+  - blocked by a duplicate.
+- After placement, if `nums[i] != i + 1`, then `i + 1` is missing.
+- A second traversal is necessary after cyclic placement to collect all missing numbers.
+
+Mental Model:
+- Imagine every number has a "home" at index `value - 1`.
+- Keep sending each number to its home.
+- If a home is already occupied by the same number, it's a duplicate and cannot move further.
+- The empty homes (incorrect indices) correspond to the missing numbers.
+
+Trigger:
+- Numbers are in the range `[1, n]`.
+- Need O(n) time and O(1) extra space.
+- Problem asks to place numbers at their correct indices or detect missing values.
+
+Time: O(n)
+Space: O(1)
