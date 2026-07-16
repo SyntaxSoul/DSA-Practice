@@ -675,3 +675,37 @@ Time: O(n × m)
 - m = average word length
 
 Space: O(1)
+
+## LC-506: Relative Ranks
+
+[Solution](./LC-506-RelativeRanks.java)
+
+Pattern:
+- Sorting
+- HashMap (Index Mapping)
+
+Mistakes:
+- Initially tried sorting a copy of the array and searching the original array using nested loops, resulting in O(n²) time.
+- Couldn't figure out how to preserve the original indices after sorting.
+- Thought sorting alone would be sufficient, but realized the final answer must be returned in the original order.
+- Took time to understand that a HashMap can directly map each score to its original index, eliminating repeated searches.
+
+Key Insights:
+- Sort only to determine the ranking order.
+- The original order must be preserved while building the final answer.
+- Use a HashMap to connect each score with its original index.
+- Assign "Gold Medal", "Silver Medal", "Bronze Medal", then numerical ranks starting from 4.
+
+Mental Model:
+- Imagine preparing a leaderboard.
+- Sorting tells you who came 1st, 2nd, 3rd...
+- The HashMap tells you where that person originally stood in the input array.
+- Place the corresponding rank back into the correct position.
+
+Trigger:
+- Need ranking based on sorted values.
+- Final output must follow the original input order.
+- Sorting changes positions, so index mapping is required.
+
+Time: O(n log n)
+Space: O(n)
