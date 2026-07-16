@@ -742,3 +742,37 @@ Trigger:
 
 Time: O(n log n)
 Space: O(1)
+
+## LC-566: Reshape the Matrix
+
+[Solution](./LC-566-ReshapeTheMatrix.java)
+
+Pattern:
+- Matrix Traversal
+- Index Mapping
+
+Mistakes:
+- Initially tried handling horizontal and vertical reshaping separately, making the logic unnecessarily complicated.
+- Tried manually adjusting row and column indices, which failed when scaling vertically.
+- Solved it by flattening the matrix into a 1D array first, but later realized the extra array wasn't necessary.
+- Didn't initially understand how a single linear index can represent positions in both the old and new matrices.
+
+Key Insights:
+- A matrix is internally just a sequence of elements in row-major order.
+- A single running index (`k`) is enough to traverse both matrices.
+- Convert the linear index back to matrix coordinates using row and column calculations.
+- No extra 1D array is required; elements can be copied directly during traversal.
+
+Mental Model:
+- Imagine reading the original matrix like a book, left to right and top to bottom.
+- Number every element using a single index: `0, 1, 2, ...`.
+- Place each element into the new matrix using the same index.
+- The linear order never changes; only the row and column boundaries change.
+
+Trigger:
+- Need to preserve traversal order while changing matrix dimensions.
+- Total number of elements remains unchanged.
+- A single linear index can simplify coordinate transformations.
+
+Time: O(m × n)
+Space: O(1)
