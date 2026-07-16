@@ -636,3 +636,42 @@ Trigger:
 
 Time: O(n + m)
 Space: O(n)
+
+## LC-500: Keyboard Row
+
+[Solution](./LC-500-KeyboardRow.java)
+
+Pattern:
+- Hashing
+- String Traversal
+- Character Mapping
+
+Mistakes:
+- Initially tried using `String.contains()` for every character, which made the implementation complicated.
+- Confused `char` with `String` while using `contains()`.
+- Tried manually comparing keyboard rows instead of assigning each character a row number.
+- Didn't realize that a fixed-size array (`int[26]`) is simpler and faster than a `HashMap` because the alphabet size is fixed.
+
+Key Insights:
+- Every alphabet belongs to exactly one keyboard row.
+- Map every character to its row number (1, 2, or 3).
+- Determine the row of the first character.
+- Every remaining character must belong to the same row.
+- If any character belongs to a different row, reject the word immediately.
+
+Mental Model:
+- Imagine every letter has a permanent row ID.
+- Pick the row ID of the first letter.
+- Verify that every other letter has the same ID.
+- One mismatch means the word cannot be typed using a single keyboard row.
+
+Trigger:
+- Need to classify characters into fixed groups.
+- Character-to-category mapping is required.
+- Fixed alphabet size (26) suggests using an array instead of a HashMap.
+
+Time: O(n × m)
+- n = number of words
+- m = average word length
+
+Space: O(1)
