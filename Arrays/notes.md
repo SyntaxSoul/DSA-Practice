@@ -601,3 +601,38 @@ Trigger:
 
 Time: O(n)
 Space: O(1)
+
+## LC-496: Next Greater Element I
+
+[Solution](./LC-496-NextGreaterElementI.java)
+
+Pattern:
+- Monotonic Stack
+- HashMap
+- Array Traversal
+
+Mistakes:
+- Started with a brute-force nested loop solution without recognizing the repeated work.
+- Couldn't understand why a Stack was required when a HashMap seemed sufficient.
+- Initially thought the HashMap could directly store the next greater element, but didn't realize the values must be discovered first.
+- Found the Stack explanation confusing until realizing it keeps elements whose next greater value is still unknown.
+
+Key Insights:
+- A HashMap stores the final answers, but it cannot discover them by itself.
+- A Monotonic Stack maintains decreasing elements waiting for their next greater element.
+- When a larger element appears, it becomes the next greater element for every smaller element on top of the stack.
+- After preprocessing `nums2`, answering each query from `nums1` becomes a simple HashMap lookup.
+
+Mental Model:
+- Imagine people standing in a queue waiting for someone taller.
+- The Stack contains everyone still waiting.
+- As soon as a taller person arrives, everyone shorter on top of the stack gets their answer and leaves the queue.
+- The HashMap records these answers for future lookup.
+
+Trigger:
+- Need the first greater element to the right.
+- Multiple queries depend on preprocessing another array.
+- Repeated right-side searching suggests using a Monotonic Stack.
+
+Time: O(n + m)
+Space: O(n)
