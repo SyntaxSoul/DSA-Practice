@@ -878,3 +878,39 @@ Trigger:
 
 Time: O(n + m)
 Space: O(n)
+
+## LC-605: Can Place Flowers
+
+[Solution](./LC-605-CanPlaceFlowers.java)
+
+Pattern:
+- Greedy
+- Array Traversal
+
+Mistakes:
+- Initially handled the first position, last position, and middle positions using separate conditions, making the code lengthy and difficult to follow.
+- Overcomplicated boundary handling instead of treating missing neighbours as empty plots.
+- Focused on writing different cases rather than identifying the common planting condition.
+- Realized that after planting a flower, skipping the next position avoids unnecessary checks.
+
+Key Insights:
+- A flower can be planted only if the current plot and both neighbouring plots are empty.
+- For boundary positions, treat out-of-bound neighbours as empty.
+- After planting a flower, skip the next position because adjacent planting is impossible.
+- Greedily planting whenever possible always maximizes the number of flowers.
+
+Mental Model:
+- Walk through the flowerbed from left to right.
+- At each plot, ask:
+  - Is the left plot empty?
+  - Is the current plot empty?
+  - Is the right plot empty?
+- If all are empty, plant a flower and move ahead by two positions.
+
+Trigger:
+- Need to maximize placements under adjacency constraints.
+- Each successful placement affects only the immediate neighbours.
+- Greedy local decisions guarantee the optimal answer.
+
+Time: O(n)
+Space: O(1)
