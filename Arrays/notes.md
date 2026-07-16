@@ -461,3 +461,40 @@ Trigger:
 
 Time: O(n)
 Space: O(1)
+
+## LC-455: Assign Cookies
+
+[Solution](./LC-455-AssignCookies.java)
+
+Pattern:
+- Greedy
+- Sorting
+- Two Pointers
+
+Mistakes:
+- Initially tried assigning every cookie to every child using nested loops, which reused cookies multiple times.
+- Couldn't think of an optimal solution because sorting didn't initially seem necessary.
+- Thought sorting might not be optimal, but later realized it is the key observation for the greedy approach.
+- Initially matched children from the largest greed factor, but later learned that matching the smallest available cookie to the least greedy child is the natural greedy strategy.
+
+Key Insights:
+- Sort both the greed array and the cookie array.
+- Always satisfy the least greedy child first using the smallest cookie that can satisfy them.
+- If the current cookie cannot satisfy a child, it can never satisfy a greedier child.
+- Each cookie is used exactly once, so advancing pointers naturally prevents reuse.
+
+Mental Model:
+- Line up children by increasing greed.
+- Line up cookies by increasing size.
+- Try to satisfy the current child with the current smallest available cookie.
+- If successful, move to the next child and next cookie.
+- Otherwise, discard the small cookie and try the next larger one.
+
+Trigger:
+- Need to maximize the number of successful assignments.
+- Each resource can be used only once.
+- Matching smallest feasible resource with smallest requirement suggests a Greedy approach.
+- Sorting helps make local optimal decisions.
+
+Time: O(n log n + m log m)
+Space: O(1)
