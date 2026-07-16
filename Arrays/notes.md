@@ -355,3 +355,37 @@ Trigger:
 
 Time: O(n + m)
 Space: O(n + m)
+
+## LC-350: Intersection of Two Arrays II
+
+[Solution](./LC-350-IntersectionOfTwoArraysII.java)
+
+Pattern:
+- HashMap
+- Frequency Counting
+
+Mistakes:
+- Initially thought of using HashSet, but HashSet removes duplicates, whereas this problem requires preserving duplicate occurrences.
+- Was unsure how to convert a List<Integer> to an int[].
+
+Key Insights:
+- Store the frequency of every element from nums1 in a HashMap.
+- Traverse nums2.
+- If an element exists in the map with frequency > 0:
+  - Add it to the answer.
+  - Decrease its frequency.
+- Frequency count naturally handles duplicates.
+
+Mental Model:
+- HashMap acts like an inventory.
+- nums1 fills the inventory.
+- nums2 consumes items from the inventory.
+- Once the count becomes zero, that element is no longer available.
+
+Trigger:
+- Need duplicate occurrences.
+- Need fast lookup.
+- Need to know how many times an element can still be used.
+
+Time: O(n + m)
+Space: O(n)
