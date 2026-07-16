@@ -776,3 +776,36 @@ Trigger:
 
 Time: O(m × n)
 Space: O(1)
+
+## LC-594: Longest Harmonious Subsequence
+
+[Solution](./LC-594-LongestHarmoniousSubsequence.java)
+
+Pattern:
+- HashMap
+- Frequency Counting
+
+Mistakes:
+- Initially tried solving it using sorting, but couldn't find a clean approach.
+- Built a frequency map, then unnecessarily converted the keys into a sorted list.
+- Compared only consecutive sorted keys, making the solution more complicated than required.
+- Didn't realize that after building the frequency map, checking `num` and `num + 1` is sufficient.
+
+Key Insights:
+- Build a frequency map of all numbers.
+- For every unique number, check whether `num + 1` exists.
+- If it exists, the harmonious subsequence length is `freq(num) + freq(num + 1)`.
+- Sorting is completely unnecessary because HashMap lookup is O(1).
+
+Mental Model:
+- Think of every number looking only for its immediate neighbour (`+1`).
+- If the neighbour exists, combine their frequencies.
+- The largest such combination is the answer.
+
+Trigger:
+- Need element frequencies.
+- Need to compare values differing by exactly 1.
+- Fast key lookup is more useful than sorting.
+
+Time: O(n)
+Space: O(n)
