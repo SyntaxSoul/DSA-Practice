@@ -709,3 +709,36 @@ Trigger:
 
 Time: O(n log n)
 Space: O(n)
+
+## LC-561: Array Partition
+
+[Solution](./LC-561-ArrayPartition.java)
+
+Pattern:
+- Sorting
+- Greedy
+
+Mistakes:
+- Initially overthought the problem instead of looking for a pairing strategy.
+- Didn't immediately realize that sorting makes the optimal pairing obvious.
+- Thought pairing from the end using `Math.min()` was different, then realized it is equivalent to summing every alternate element after sorting.
+
+Key Insights:
+- Sorting places similar values together.
+- Pairing adjacent elements maximizes the sum of the minimum values.
+- In every sorted pair, the smaller element always contributes to the answer.
+- Traversing from either direction works as long as adjacent sorted elements are paired consistently.
+
+Mental Model:
+- Arrange all numbers in ascending order.
+- Form pairs using neighbouring elements.
+- Every pair contributes its smaller element to the final answer.
+- Greedy works because pairing nearby numbers prevents wasting large numbers.
+
+Trigger:
+- Need to maximize or minimize a value by forming pairs.
+- Sorting naturally exposes the optimal pairing.
+- Local optimal choices lead to the global optimum.
+
+Time: O(n log n)
+Space: O(1)
