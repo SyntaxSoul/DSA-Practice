@@ -534,3 +534,36 @@ Trigger:
 
 Time: O(m × n)
 Space: O(1)
+
+## LC-485: Max Consecutive Ones
+
+[Solution](./LC-485-MaxConsecutiveOnes.java)
+
+Pattern:
+- Array Traversal
+- Running Count
+- Maximum Tracking
+
+Mistakes:
+- Initially forgot to compare the final running count with the maximum after the loop.
+- Realized the longest sequence might end at the last element, so updating `max` only when encountering `0` is insufficient.
+
+Key Insights:
+- Maintain a running count of consecutive `1`s.
+- Reset the count whenever a `0` is encountered.
+- Update the maximum length whenever the streak ends.
+- Perform one final comparison after the loop to handle a streak ending at the last element.
+
+Mental Model:
+- Think of `current` as the length of the ongoing streak.
+- A `0` acts as a wall that ends the current streak.
+- Every time a wall appears, compare the streak with the best one seen so far.
+- After finishing the traversal, check the last streak since it may never have encountered a wall.
+
+Trigger:
+- Need to find the longest continuous sequence.
+- Sequence breaks on a specific value.
+- Maintain a running count and update the answer when the sequence ends.
+
+Time: O(n)
+Space: O(1)
