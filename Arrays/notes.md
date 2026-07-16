@@ -498,3 +498,39 @@ Trigger:
 
 Time: O(n log n + m log m)
 Space: O(1)
+
+## LC-463: Island Perimeter
+
+[Solution](./LC-463-IslandPerimeter.java)
+
+Pattern:
+- Matrix Traversal
+- Neighbour Traversal
+- Counting
+
+Mistakes:
+- Initially tried handling boundary cells separately, which made the code complex and error-prone.
+- Assumed corner and edge cells required different logic instead of treating every land cell uniformly.
+- Accidentally skipped the 0th row and 0th column while checking neighbours due to restrictive boundary conditions.
+- Got confused by nested braces, causing the neighbour-checking logic to execute incorrectly.
+- Overcomplicated the solution before realizing every land cell contributes 4 edges, and each shared neighbour removes 1 exposed edge.
+
+Key Insights:
+- Every land cell initially contributes 4 sides to the perimeter.
+- For every adjacent land neighbour, subtract 1 from the current cell's perimeter contribution.
+- The same shared edge is counted once from each cell, naturally removing 2 from the total perimeter.
+- Boundary checks are only required before accessing neighbours, not for calculating perimeter separately.
+
+Mental Model:
+- Imagine every land cell as an independent square with 4 walls.
+- Whenever two land cells touch, they share a wall, so that wall is no longer exposed.
+- Final perimeter = Total walls - Shared walls.
+
+Trigger:
+- Need to count exposed sides of cells.
+- Each cell contributes a fixed value initially.
+- Neighbour relationships reduce the contribution.
+- Matrix traversal with four-direction neighbour checks.
+
+Time: O(m × n)
+Space: O(1)
