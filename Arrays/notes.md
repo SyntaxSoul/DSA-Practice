@@ -844,3 +844,37 @@ Time: O(k)
 - k = number of operations
 
 Space: O(1)
+
+## LC-599: Minimum Index Sum of Two Lists
+
+[Solution](./LC-599-MinimumIndexSumOfTwoLists.java)
+
+Pattern:
+- HashMap
+- Array Traversal
+
+Mistakes:
+- Initially solved the problem using nested loops, resulting in O(n²) time.
+- In the first HashMap approach, updated the map with index sums and then traversed the map again to find the minimum, causing unnecessary work.
+- Didn't initially realize the minimum index sum could be tracked while traversing the second list itself.
+- Learned that storing only the indices of the first list is sufficient; modifying the HashMap is unnecessary.
+
+Key Insights:
+- Store each restaurant from the first list along with its index in a HashMap.
+- While traversing the second list, immediately compute the index sum if a common restaurant exists.
+- Maintain the minimum index sum during the same traversal.
+- Avoid a second pass over the HashMap by updating the result list on the fly.
+
+Mental Model:
+- Think of the HashMap as a directory of restaurants from the first list.
+- As you visit each restaurant in the second list, immediately check whether it exists in the directory.
+- If it does, calculate the combined index and compare it with the current minimum.
+- Keep only the restaurants with the smallest index sum.
+
+Trigger:
+- Need fast lookup between two arrays.
+- Need to preserve original indices.
+- Can compute the answer during traversal instead of storing intermediate results.
+
+Time: O(n + m)
+Space: O(n)
