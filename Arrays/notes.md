@@ -567,3 +567,37 @@ Trigger:
 
 Time: O(n)
 Space: O(1)
+
+## LC-495: Teemo Attacking
+
+[Solution](./LC-495-TeemoAttacking.java)
+
+Pattern:
+- Array Traversal
+- Interval Overlap
+- Greedy Counting
+
+Mistakes:
+- Initially thought the solution would be more complicated than it actually was.
+- Used `<=` instead of `<` while checking overlap, then realized the poison duration includes the attack time, so the overlap condition depends on the interval boundaries.
+- Learned that when two poison intervals overlap, only the non-overlapping duration should be added instead of adding the full duration again.
+
+Key Insights:
+- The first attack always contributes the full poison duration.
+- For every subsequent attack:
+  - If it overlaps with the previous poison interval, add only the time difference.
+  - Otherwise, add the full duration.
+- The problem is about calculating the union of overlapping intervals, not simulating every poisoned second.
+
+Mental Model:
+- Imagine every attack creates a poison interval.
+- If the next interval starts before the previous one ends, merge them by adding only the uncovered portion.
+- If there is no overlap, simply add a new interval of full duration.
+
+Trigger:
+- Need to calculate total covered time.
+- Intervals may overlap.
+- Previous interval affects the contribution of the current interval.
+
+Time: O(n)
+Space: O(1)
