@@ -809,3 +809,38 @@ Trigger:
 
 Time: O(n)
 Space: O(n)
+
+## LC-598: Range Addition II
+
+[Solution](./LC-598-RangeAdditionII.java)
+
+Pattern:
+- Array Traversal
+- Minimum Tracking
+
+Mistakes:
+- Initially thought the matrix had to be constructed and updated for every operation.
+- Didn't immediately realize that only the overlapping region of all operations determines the maximum value.
+- Overcomplicated the problem before recognizing that tracking the minimum row and column among all operations is sufficient.
+
+Key Insights:
+- Every operation affects the submatrix from `(0,0)` to `(a-1,b-1)`.
+- The cells incremented the most are those common to every operation.
+- The overlapping region is determined by the smallest `a` and the smallest `b`.
+- No matrix construction or simulation is required.
+
+Mental Model:
+- Imagine each operation placing a transparent rectangle from the top-left corner.
+- The darkest region is where **all** rectangles overlap.
+- That overlap is simply:
+  - Minimum row limit × Minimum column limit.
+
+Trigger:
+- Multiple operations affect prefixes of a matrix.
+- Need the size of the common overlapping region.
+- Matrix simulation seems expensive, suggesting a mathematical observation.
+
+Time: O(k)
+- k = number of operations
+
+Space: O(1)
