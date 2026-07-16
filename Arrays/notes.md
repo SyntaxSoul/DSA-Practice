@@ -389,3 +389,38 @@ Trigger:
 
 Time: O(n + m)
 Space: O(n)
+
+## LC-414: Third Maximum Number
+
+[Solution](./LC-414-ThirdMaximumNumber.java)
+
+Pattern:
+- Array Traversal
+- Track Maximum Values
+- State Tracking
+
+Mistakes:
+- Initially focused on finding the three largest values instead of the three **distinct** largest values.
+- Forgot that duplicate values must not be counted as separate maximums.
+- Tried updating maximum values without carefully maintaining their order, which caused incorrect tracking.
+
+Key Insights:
+- Only distinct maximum values should be considered.
+- Whenever a new maximum is found, the previous maximums must be shifted correctly.
+- Before updating any maximum, check whether the current number is already one of the tracked maximums.
+
+Mental Model:
+- Imagine three podium positions:
+  - First Maximum
+  - Second Maximum
+  - Third Maximum
+- Every new distinct value competes for one of these positions.
+- If it becomes the new first, everyone else shifts down one position.
+
+Trigger:
+- Need to find the top K distinct elements.
+- Constant extra space is expected.
+- Single array traversal is sufficient.
+
+Time: O(n)
+Space: O(1)
