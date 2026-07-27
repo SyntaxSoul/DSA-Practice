@@ -33,3 +33,37 @@ Trigger:
 Time: O(n)
 
 Space: O(1)
+
+## LC-58: Length of Last Word
+
+[Solution](./LC-58-LengthOfLastWord.java)
+
+Pattern:
+- String Traversal
+- Reverse Traversal
+
+Mistakes:
+- Initially used `trim()`, which creates a new string unnecessarily.
+- Compared spaces using `ch - 32 == 0` instead of `ch == ' '`, making the code less readable.
+- Later realized that traversing from the end naturally avoids the need for `trim()`.
+
+Key Insights:
+- Skip all trailing spaces first.
+- Once the first non-space character is found, start counting.
+- Stop counting when the next space is encountered.
+- Reverse traversal makes the solution simple and avoids extra string creation.
+
+Mental Model:
+- Start from the end of the string.
+- Ignore trailing spaces.
+- Count characters of the last word.
+- Stop when the previous space is reached.
+
+Trigger:
+- Need information about the last word or last token in a string.
+- Trailing spaces may be present.
+- Reverse traversal is simpler than preprocessing the string.
+
+Time: O(n)
+
+Space: O(1)
