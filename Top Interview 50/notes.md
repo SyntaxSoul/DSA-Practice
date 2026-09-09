@@ -67,3 +67,39 @@ Trigger:
 Time: O(n)
 
 Space: O(1)
+
+## LC-14: Longest Common Prefix
+
+[Solution](./LC-14-LongestCommonPrefix.java)
+
+Pattern:
+- String Traversal
+- Prefix Comparison
+
+Mistakes:
+- Initially assumed the first string's length could always be used as the comparison limit.
+- Later realized the common prefix cannot be longer than the shortest string.
+- Learned to update the valid prefix length whenever a shorter string is encountered.
+
+Key Insights:
+- Use the first string as the reference.
+- Compare every other string character by character.
+- Keep reducing the maximum possible prefix length whenever a mismatch occurs.
+- The final prefix is the substring of the first string up to the remaining valid length.
+
+Mental Model:
+- Imagine the first string as a template.
+- Every new string trims the template whenever a mismatch is found.
+- The template keeps shrinking until all strings agree.
+
+Trigger:
+- Need the common starting sequence among multiple strings.
+- Compare characters column by column.
+- The answer can only become shorter as more strings are processed.
+
+Time: O(n × m)
+- n = number of strings
+- m = length of the shortest string
+
+Space: O(1)
+
