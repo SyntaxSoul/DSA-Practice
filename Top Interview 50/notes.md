@@ -103,3 +103,39 @@ Time: O(n × m)
 
 Space: O(1)
 
+## LC-28: Find the Index of the First Occurrence in a String
+
+[Solution](./LC-28-FindTheIndexOfTheFirstOccurrenceInAString.java)
+
+Pattern:
+- String Traversal
+- Substring Matching
+
+Mistakes:
+- Initially used `==` instead of `.equals()` for string comparison.
+  - `==` compares whether two references point to the same object in memory.
+  - `.equals()` compares the actual sequence of characters.
+- Forgot to check whether `needle.length()` is greater than `haystack.length()`.
+- Forgot to verify that `i + needle.length()` does not exceed the length of `haystack` before calling `substring()`.
+- Initially underestimated the time complexity because `substring()` and `.equals()` are not constant-time operations.
+
+Key Insights:
+- Compare only when the first character matches.
+- Always ensure the substring boundaries are valid before extracting it.
+- Use `.equals()` for string content comparison.
+- Early boundary checks prevent unnecessary work and runtime exceptions.
+
+Mental Model:
+- Slide a window of length `needle.length()` over the `haystack`.
+- Whenever the first character matches, compare the entire window with `needle`.
+- Return the first matching index.
+
+Trigger:
+- Need to find the first occurrence of one string inside another.
+- Compare fixed-length windows over a larger string.
+- Brute-force matching is acceptable when advanced string algorithms are not required.
+
+Time: O(n × m)
+
+Space: O(m)
+
