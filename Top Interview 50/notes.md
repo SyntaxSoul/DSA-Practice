@@ -139,3 +139,37 @@ Time: O(n × m)
 
 Space: O(m)
 
+## LC-125: Valid Palindrome
+
+[Solution](./LC-125-ValidPalindrome.java)
+
+Pattern:
+- Two Pointers
+- String Traversal
+
+Mistakes:
+- Initially cleaned the string using `replaceAll()` and created a reversed copy, leading to unnecessary extra space.
+- Built the reversed string using `+=`, which resulted in O(n²) time because Java `String` is immutable.
+- Got stuck implementing the two-pointer approach because special characters appeared in between valid characters.
+- Later realized invalid characters don't need to be removed; they can simply be skipped during traversal.
+
+Key Insights:
+- Use two pointers starting from both ends of the string.
+- Skip all non-alphanumeric characters before comparing.
+- Compare characters in a case-insensitive manner.
+- No extra string or regex is required.
+
+Mental Model:
+- Imagine two people walking towards each other from opposite ends.
+- If either person stands on a special character, they simply step over it.
+- Only when both stand on letters or digits do they compare.
+- If every comparison matches, the string is a palindrome.
+
+Trigger:
+- Need to compare characters from both ends.
+- Invalid characters should be ignored rather than removed.
+- String reversal or extra memory is unnecessary.
+
+Time: O(n)
+
+Space: O(1)
