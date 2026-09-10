@@ -173,3 +173,38 @@ Trigger:
 Time: O(n)
 
 Space: O(1)
+
+## LC-392: Is Subsequence
+
+[Solution](./LC-392-IsSubsequence.java)
+
+Pattern:
+- Two Pointers
+- String Traversal
+
+Mistakes:
+- Initially forgot to handle the case when all characters of `s` are matched before reaching the end of `t`.
+- Learned that only one pass through `t` is required; backtracking is unnecessary.
+- Realized the answer depends on preserving the order of characters, not on them being contiguous.
+
+Key Insights:
+- Traverse `t` once while tracking the current character of `s`.
+- Whenever characters match, move to the next character in `s`.
+- If every character of `s` is matched in order, `s` is a subsequence of `t`.
+- An early return is possible as soon as all characters of `s` are matched.
+
+Mental Model:
+- Imagine `s` as a checklist.
+- Walk through `t` from left to right.
+- Every time the current checklist item is found, cross it off and move to the next one.
+- If the entire checklist is completed, the answer is `true`.
+
+Trigger:
+- Need to determine whether one sequence appears in another while preserving order.
+- Characters do not need to be adjacent.
+- Single forward traversal is sufficient.
+
+Time: O(n)
+- n = length of `t`
+
+Space: O(1)
