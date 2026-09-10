@@ -242,3 +242,36 @@ Trigger:
 Time: O(n)
 
 Space: O(1)
+
+## LC-11: Container With Most Water
+
+[Solution](./LC-11-ContainerWithMostWater.java)
+
+Pattern:
+- Two Pointers
+- Greedy
+
+Mistakes:
+- Initially, it wasn't obvious why moving only the shorter pointer is the correct choice.
+- Learned that moving the taller pointer can never increase the area because the width always decreases while the limiting height remains unchanged.
+
+Key Insights:
+- The area is determined by the shorter of the two heights.
+- The width decreases after every pointer movement.
+- To have any chance of increasing the area, the limiting (shorter) height must increase.
+- Therefore, always move the pointer pointing to the shorter line.
+
+Mental Model:
+- Imagine two walls holding water.
+- The shorter wall limits the water level.
+- Moving the taller wall only reduces the width without increasing the water level.
+- Moving the shorter wall gives a chance to find a taller wall while accepting the reduced width.
+
+Trigger:
+- Input is an array with decisions involving both ends.
+- Need to maximize or minimize a value based on two endpoints.
+- One pointer movement can be eliminated using a greedy observation.
+
+Time: O(n)
+
+Space: O(1)
