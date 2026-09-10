@@ -208,3 +208,37 @@ Time: O(n)
 - n = length of `t`
 
 Space: O(1)
+
+## LC-167: Two Sum II - Input Array Is Sorted
+
+[Solution](./LC-167-TwoSumII-InputArrayIsSorted.java)
+
+Pattern:
+- Two Pointers
+- Array Traversal
+
+Mistakes:
+- Initially recalculated `numbers[start] + numbers[end]` multiple times in the same iteration.
+- Learned that storing the sum once makes the code cleaner and easier to read.
+- Realized that the sorted property eliminates the need for a HashMap.
+
+Key Insights:
+- Start with pointers at both ends of the array.
+- If the sum is too small, move the left pointer to increase it.
+- If the sum is too large, move the right pointer to decrease it.
+- The sorted order guarantees that these local decisions never miss the correct answer.
+
+Mental Model:
+- Imagine two people standing at opposite ends of a sorted line.
+- If their combined value is too small, the smaller value must increase, so move the left pointer.
+- If the combined value is too large, the larger value must decrease, so move the right pointer.
+- Continue until the target sum is found.
+
+Trigger:
+- Input array is sorted.
+- Need to find a pair satisfying a condition.
+- Adjusting one pointer predictably changes the sum.
+
+Time: O(n)
+
+Space: O(1)
