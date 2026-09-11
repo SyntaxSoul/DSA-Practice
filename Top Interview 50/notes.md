@@ -275,3 +275,38 @@ Trigger:
 Time: O(n)
 
 Space: O(1)
+
+## LC-383: Ransom Note
+
+[Solution](./LC-383-RansomNote.java)
+
+Pattern:
+- HashMap
+- Frequency Counting
+
+Mistakes:
+- Initially used `break` when a required character was unavailable instead of returning `false` immediately.
+- Returned `true` inside the loop after processing the last character, which was unnecessary.
+- Learned that consuming character frequencies while traversing the ransom note is simpler than comparing two complete frequency maps.
+
+Key Insights:
+- Count the frequency of each character in the magazine.
+- For every character in the ransom note, consume one occurrence from the frequency map.
+- If a required character is missing or exhausted, construction is impossible.
+- Successfully consuming every character means the ransom note can be constructed.
+
+Mental Model:
+- Imagine the magazine as a bag of letters.
+- Each time you need a letter for the ransom note, take one from the bag.
+- If the bag doesn't contain the required letter, stop immediately.
+- If every required letter is available, the ransom note can be formed.
+
+Trigger:
+- Need to verify whether one collection can supply another.
+- Character frequencies matter.
+- Characters are consumed after use.
+
+Time: O(n + m)
+
+Space: O(k)
+- `k` = number of distinct characters (or O(1) for lowercase English letters)
