@@ -310,3 +310,40 @@ Time: O(n + m)
 
 Space: O(k)
 - `k` = number of distinct characters (or O(1) for lowercase English letters)
+
+## LC-205: Isomorphic Strings
+
+[Solution](./LC-205-IsomorphicStrings.java)
+
+Pattern:
+- HashMap
+- Character Mapping
+
+Mistakes:
+- Initially tried solving the problem using character frequencies, but realized equal frequencies do not guarantee isomorphic strings.
+- Struggled to understand what "mapping" meant.
+- First implemented only `s → t` mapping, then realized two different characters from `s` could still map to the same character in `t`.
+- Learned that the mapping must be one-to-one, requiring validation in both directions.
+
+Key Insights:
+- Each character in `s` must always map to the same character in `t`.
+- No two different characters in `s` can map to the same character in `t`.
+- Maintain two HashMaps:
+  - `s → t`
+  - `t → s`
+- Verify both mappings at every character.
+
+Mental Model:
+- Imagine assigning permanent partners.
+- Once `a` is paired with `x`, it can never pair with another character.
+- Likewise, `x` cannot be paired with anyone except `a`.
+- Every new character pair must respect both existing mappings.
+
+Trigger:
+- Need to enforce a one-to-one relationship between two sets of characters.
+- Character frequencies are insufficient.
+- Bidirectional consistency suggests using two HashMaps.
+
+Time: O(n)
+
+Space: O(k)
