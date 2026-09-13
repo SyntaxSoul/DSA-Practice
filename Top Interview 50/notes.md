@@ -347,3 +347,41 @@ Trigger:
 Time: O(n)
 
 Space: O(k)
+
+## LC-290: Word Pattern
+
+[Solution](./LC-290-WordPattern.java)
+
+Pattern:
+- HashMap
+- Bidirectional Mapping
+- String Parsing
+
+Mistakes:
+- Initially tried parsing the sentence manually, making the logic more complex than necessary.
+- Compared `StringBuilder` objects with `String` values instead of converting them using `toString()`.
+- Learned that checking only `pattern → word` mapping is insufficient; the reverse mapping (`word → pattern`) is also required.
+- Missed the edge case where the number of pattern characters and words do not match.
+
+Key Insights:
+- The problem is an extension of **LC-205: Isomorphic Strings**.
+- Every pattern character must map to exactly one word.
+- Every word must map back to exactly one pattern character.
+- Use two HashMaps to enforce one-to-one mapping.
+- Always ensure the number of words matches the length of the pattern before validating mappings.
+
+Mental Model:
+- Imagine assigning permanent nicknames.
+- Once a pattern character is paired with a word, that pairing can never change.
+- Likewise, a word cannot be assigned to two different pattern characters.
+- Every new pair must satisfy both existing mappings.
+
+Trigger:
+- Need to establish a one-to-one relationship between two different types of objects.
+- Bidirectional consistency is required.
+- Think of LC-205 whenever mapping between two sequences is involved.
+
+Time: O(n)
+
+Space: O(k)
+- `k` = number of distinct pattern characters and words.
