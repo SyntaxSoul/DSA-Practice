@@ -385,3 +385,39 @@ Time: O(n)
 
 Space: O(k)
 - `k` = number of distinct pattern characters and words.
+
+## LC-242: Valid Anagram
+
+[Solution](./LC-242-ValidAnagram.java)
+
+Pattern:
+- Frequency Counting
+- Fixed-Size Array
+- String Traversal
+
+Mistakes:
+- Initially solved the problem using a `HashMap`, then realized a fixed-size frequency array is more suitable since the input contains only lowercase English letters.
+- Learned that a fixed-size array (`int[26]`) uses constant extra space, not O(n).
+- Initially decremented the frequency in two steps, then learned it can be combined into a single operation (`--freq[index]`).
+
+Key Insights:
+- If the string lengths differ, they cannot be anagrams.
+- Count the frequency of each character in the first string.
+- Decrease the frequency while traversing the second string.
+- If any frequency becomes negative, the strings are not anagrams.
+- If every character is successfully consumed, the strings are anagrams.
+
+Mental Model:
+- Imagine the first string as a bag of letters.
+- Every character from the second string removes one matching letter from the bag.
+- If a required letter is unavailable, the strings cannot be anagrams.
+- Successfully removing every letter means both strings contain exactly the same characters.
+
+Trigger:
+- Need to compare character frequencies.
+- Character order does not matter.
+- Character set is fixed (lowercase English letters), making a frequency array preferable to a HashMap.
+
+Time: O(n)
+
+Space: O(1)
