@@ -421,3 +421,40 @@ Trigger:
 Time: O(n)
 
 Space: O(1)
+
+## LC-202: Happy Number
+
+[Solution](./LC-202-HappyNumber.java)
+
+Pattern:
+- HashSet
+- Cycle Detection
+- Digit Manipulation
+
+Mistakes:
+- Initially used `^2` to square digits, then learned that `^` is the bitwise XOR operator in Java, not exponentiation.
+- First attempted to detect a cycle by checking whether the number returned to its original value, but realized cycles may not include the starting number.
+- Learned that storing previously seen numbers in a HashSet reliably detects any cycle.
+
+Key Insights:
+- Replace the number with the sum of the squares of its digits.
+- If the number becomes `1`, it is a happy number.
+- If a number repeats, the process has entered a cycle and will never reach `1`.
+- A HashSet efficiently detects repeated states.
+
+Mental Model:
+- Imagine each number as a state in a journey.
+- Every transformation moves to a new state.
+- Reaching `1` means success.
+- Visiting a previously seen state means you're trapped in a loop forever.
+
+Trigger:
+- Repeatedly transform a value.
+- Need to detect whether a sequence enters a cycle.
+- HashSet is a natural choice for remembering previously visited states.
+
+Time: O(k)
+
+Space: O(k)
+
+(`k` = number of unique intermediate values before reaching `1` or a cycle. In practice, both are effectively O(1).)
