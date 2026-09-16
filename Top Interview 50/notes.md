@@ -458,3 +458,36 @@ Time: O(k)
 Space: O(k)
 
 (`k` = number of unique intermediate values before reaching `1` or a cycle. In practice, both are effectively O(1).)
+
+## LC-219: Contains Duplicate II
+
+[Solution](./LC-219-ContainsDuplicateII.java)
+
+Pattern:
+- HashMap
+- Array Traversal
+
+Mistakes:
+- Initially, it wasn't obvious whether to store the first occurrence or the latest occurrence of each number.
+- Learned that updating the index after every occurrence is necessary to always compare with the closest previous occurrence.
+
+Key Insights:
+- Store the latest index of every number.
+- When the same number appears again, calculate the distance from its previous occurrence.
+- If the distance is less than or equal to `k`, return `true`.
+- Always update the stored index to the current position.
+
+Mental Model:
+- Imagine every number leaves a marker at its latest position.
+- When the number appears again, measure the distance from the last marker.
+- If the distance is within `k`, the condition is satisfied.
+- Otherwise, move the marker to the current position.
+
+Trigger:
+- Need to check duplicates within a limited distance.
+- Previous occurrence information is sufficient.
+- HashMap naturally stores the latest position of each element.
+
+Time: O(n)
+
+Space: O(min(n, distinct elements))
