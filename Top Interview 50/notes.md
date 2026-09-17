@@ -491,3 +491,40 @@ Trigger:
 Time: O(n)
 
 Space: O(min(n, distinct elements))
+
+## LC-228: Summary Ranges
+
+[Solution](./LC-228-SummaryRanges.java)
+
+Pattern:
+- Array Traversal
+- Range Tracking
+
+Mistakes:
+- Initially had to think about how to handle the last range since the loop only detects when a range ends.
+- Learned that after the traversal, the final range must be added separately.
+- Learned that `String.valueOf()` is preferred over `"" + value` for converting integers to strings.
+
+Key Insights:
+- Keep track of the starting element of the current range.
+- Traverse the array and detect when consecutive numbers break.
+- When a break occurs:
+  - If the range contains one element, add it as a single number.
+  - Otherwise, add it in `"start->end"` format.
+- After the loop, add the final pending range.
+
+Mental Model:
+- Imagine walking through consecutive numbers.
+- As long as numbers continue consecutively, stay in the current range.
+- When the sequence breaks, record the completed range and begin a new one.
+- After reaching the end, don't forget to record the last range.
+
+Trigger:
+- Need to group consecutive elements.
+- Continuous sequences should be represented as a single interval.
+- Maintain the start of the current range while traversing.
+
+Time: O(n)
+
+Space: O(1)
+(Excluding the output list.)
