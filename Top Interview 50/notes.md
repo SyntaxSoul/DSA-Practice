@@ -528,3 +528,36 @@ Time: O(n)
 
 Space: O(1)
 (Excluding the output list.)
+
+## LC-67: Add Binary
+
+[Solution](./LC-67-AddBinary.java)
+
+Pattern:
+- BigInteger
+- Binary Number Conversion
+
+Mistakes:
+- Initially considered using `Integer.parseInt(binary, 2)`, but realized it fails for large binary numbers due to integer overflow.
+- Learned that `BigInteger` can parse and add arbitrarily large binary numbers.
+
+Key Insights:
+- `BigInteger(String value, int radix)` converts a binary string into a large integer.
+- `add()` performs arbitrary-precision addition.
+- `toString(2)` converts the result back to binary.
+
+Mental Model:
+- Convert both binary strings into large numbers.
+- Perform normal integer addition.
+- Convert the result back into binary.
+
+Trigger:
+- Need to perform arithmetic on numbers larger than primitive data types can hold.
+- Java's `BigInteger` provides arbitrary-precision arithmetic.
+
+Time: O(n)
+
+Space: O(n)
+
+> **Interview Note:** Although this solution is concise and correct, interviewers usually expect manual binary 
+addition using two pointers and a carry variable instead of relying on `BigInteger`.
