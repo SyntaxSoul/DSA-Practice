@@ -561,3 +561,39 @@ Space: O(n)
 
 > **Interview Note:** Although this solution is concise and correct, interviewers usually expect manual binary 
 addition using two pointers and a carry variable instead of relying on `BigInteger`.
+
+## LC-108: Convert Sorted Array to Binary Search Tree
+
+[Solution](./LC-108-ConvertSortedArrayToBST.java)
+
+Pattern:
+- Recursion
+- Divide and Conquer
+- Binary Tree Construction
+
+Mistakes:
+- Initially, it wasn't obvious which element should become the root.
+- Learned that choosing the middle element keeps the BST height-balanced.
+- Learned to use `start + (end - start) / 2` instead of `(start + end) / 2` to avoid integer overflow.
+
+Key Insights:
+- The middle element naturally becomes the root.
+- The left half recursively forms the left subtree.
+- The right half recursively forms the right subtree.
+- The recursion stops when the current subarray becomes empty.
+
+Mental Model:
+- Imagine repeatedly cutting the sorted array into two halves.
+- The middle element becomes the parent.
+- The left half builds the left child.
+- The right half builds the right child.
+- Continue until no elements remain.
+
+Trigger:
+- Input is sorted.
+- Need to construct a balanced BST.
+- Problem can be divided into independent left and right subproblems.
+
+Time: O(n)
+
+Space: O(log n)
