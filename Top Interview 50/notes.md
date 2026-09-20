@@ -596,4 +596,34 @@ Trigger:
 
 Time: O(n)
 
-Space: O(log n)
+Space: O(log n)## LC-35: Search Insert Position
+
+[Solution](./LC-35-SearchInsertPosition.java)
+
+Pattern:
+- Binary Search
+
+Mistakes:
+- Initially, it wasn't obvious why returning `left` after the loop gives the correct insertion position.
+- Learned that when Binary Search terminates without finding the target, `left` points to the first position where the target can be inserted while maintaining sorted order.
+- Learned to calculate the middle index using `left + (right - left) / 2` to avoid integer overflow.
+
+Key Insights:
+- If the target exists, return its index immediately.
+- If the target is smaller than the middle element, search the left half.
+- If the target is greater, search the right half.
+- When the search space becomes empty, `left` represents the insertion index.
+
+Mental Model:
+- Imagine shrinking the search range until no elements remain.
+- `left` always marks the beginning of the remaining search space.
+- When the search ends, that position is exactly where the target belongs.
+
+Trigger:
+- Input array is sorted.
+- Need to find an element or the position where it should be inserted.
+- Binary Search naturally solves both tasks.
+
+Time: O(log n)
+
+Space: O(1)
