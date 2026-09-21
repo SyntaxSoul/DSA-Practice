@@ -627,3 +627,48 @@ Trigger:
 Time: O(log n)
 
 Space: O(1)
+
+## LC-380: Insert Delete GetRandom O(1)
+
+[Solution](./LC-380-InsertDeleteGetRandomO1.java)
+
+Pattern:
+- HashMap
+- ArrayList
+- Data Structure Design
+
+Mistakes:
+- Initially used only a `HashSet`, but realized `getRandom()` required converting it into a list, making the operation O(n).
+- Realized a single data structure cannot efficiently support all three operations.
+- Initially struggled with the `remove()` operation because removing from the middle of an `ArrayList` shifts elements, resulting in O(n) time.
+- Learned the **swap-with-last** trick to perform deletion in O(1).
+
+Key Insights:
+- Use a `HashMap` to store `value → index` for O(1) lookup.
+- Use an `ArrayList` to provide O(1) random access.
+- During removal:
+  - Find the index of the element to remove.
+  - Replace it with the last element in the list.
+  - Update the moved element's index in the `HashMap`.
+  - Remove the last element from the list.
+- `getRandom()` simply returns a random element from the list.
+
+Mental Model:
+- Think of the `ArrayList` as storage and the `HashMap` as an address book.
+- The map always knows where each value is stored.
+- When deleting an element, don't shift everything.
+- Move the last element into the empty position and update its address in the map.
+- Remove the now-unused last position.
+
+Trigger:
+- Need O(1) insertion, deletion, and random access.
+- A single data structure cannot satisfy all requirements.
+- Combine a `HashMap` with an `ArrayList`.
+- Removing from the middle of an `ArrayList` suggests using the swap-with-last technique.
+
+Time:
+- Insert: O(1)
+- Remove: O(1)
+- GetRandom: O(1)
+
+Space: O(n)
