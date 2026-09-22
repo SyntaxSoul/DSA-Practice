@@ -672,3 +672,37 @@ Time:
 - GetRandom: O(1)
 
 Space: O(n)
+
+## LC-190: Reverse Bits
+
+[Solution](./LC-190-ReverseBits.java)
+
+Pattern:
+- Bit Manipulation
+
+Mistakes:
+- Initially, it wasn't obvious how to build the reversed number bit by bit.
+- Learned that the least significant bit of the original number becomes the most significant bit of the result.
+- Learned the difference between signed (`>>`) and unsigned (`>>>`) right shift, and why `>>>` is required for this problem.
+
+Key Insights:
+- Extract the last bit using `n & 1`.
+- Shift the result left to make room for the next bit.
+- Insert the extracted bit using bitwise OR.
+- Unsigned right shift (`>>>`) moves to the next bit without preserving the sign bit.
+- Repeat exactly 32 times.
+
+Mental Model:
+- Imagine taking bits from the right side of `n` one by one.
+- Build a new number from left to right.
+- Every extracted bit is appended to the result after shifting it left.
+
+Trigger:
+- Need to manipulate individual bits.
+- Reverse or reconstruct a binary representation.
+- Bitwise operators (`&`, `|`, `<<`, `>>>`) naturally fit the problem.
+
+Time: O(1)
+- (32 iterations)
+
+Space: O(1)
