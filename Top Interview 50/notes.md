@@ -706,3 +706,38 @@ Time: O(1)
 - (32 iterations)
 
 Space: O(1)
+
+## LC-209: Minimum Size Subarray Sum
+
+[Solution](./LC-209-MinimumSizeSubarraySum.java)
+
+Pattern:
+- Sliding Window
+- Variable Size Window
+
+Mistakes:
+- Initially found it difficult to identify when to shrink the window.
+- Learned that the window should only shrink after the current sum satisfies the target.
+- Learned that every element enters and leaves the window at most once, making the overall complexity O(n), not O(n²).
+
+Key Insights:
+- Expand the window by moving the right pointer.
+- Keep adding elements until the window becomes valid (`sum >= target`).
+- Once valid, repeatedly shrink the window from the left while updating the minimum length.
+- Continue expanding and shrinking until the entire array is processed.
+
+Mental Model:
+- Imagine stretching a rubber band over the array.
+- Expand the band until it satisfies the required sum.
+- Once valid, tighten it as much as possible without breaking the condition.
+- Record the smallest valid window seen so far.
+
+Trigger:
+- Need the smallest or largest contiguous subarray satisfying a condition.
+- All numbers are positive.
+- Window validity changes monotonically as pointers move.
+- Think of a variable-size sliding window.
+
+Time: O(n)
+
+Space: O(1)
