@@ -741,3 +741,40 @@ Trigger:
 Time: O(n)
 
 Space: O(1)
+
+## LC-66: Plus One
+
+[Solution](./LC-66-PlusOne.java)
+
+Pattern:
+- Array Traversal
+- Carry Propagation
+
+Mistakes:
+- Initially overcomplicated the solution by thinking about converting the array into a number.
+- Learned that only the trailing `9`s are affected by the carry.
+- Realized that if a digit is less than `9`, the carry stops immediately after incrementing it.
+- Learned that a new array is only required when every digit is `9`.
+
+Key Insights:
+- Traverse the array from right to left.
+- If the current digit is less than `9`, increment it and return immediately.
+- If the digit is `9`, change it to `0` and continue propagating the carry.
+- If the entire array becomes `0`s, create a new array with a leading `1`.
+
+Mental Model:
+- Imagine adding `1` exactly like manual addition.
+- Start from the last digit.
+- Carry only continues while the current digit is `9`.
+- As soon as a digit is less than `9`, increment it and stop.
+- If the carry survives all digits, prepend a new leading `1`.
+
+Trigger:
+- Need to simulate elementary addition.
+- Carry propagates from right to left.
+- Early return is possible when the carry disappears.
+
+Time: O(n)
+
+Space: O(1)
+- O(n) only in the special case where a new array of size `n + 1` is created.
