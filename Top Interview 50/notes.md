@@ -778,3 +778,42 @@ Time: O(n)
 
 Space: O(1)
 - O(n) only in the special case where a new array of size `n + 1` is created.
+
+## LC-70: Climbing Stairs
+
+[Solution](./LC-70-ClimbingStairs.java)
+
+Pattern:
+- Dynamic Programming
+- Fibonacci Sequence
+- Space Optimization
+
+Mistakes:
+- Initially thought recursion was the natural approach, but it leads to repeated calculations.
+- Learned that each step depends only on the previous two steps.
+- Realized that storing the entire DP array is unnecessary since only the last two values are required.
+- Optimized the solution from O(n) space to O(1) space.
+
+Key Insights:
+- The number of ways to reach step `i` is:
+  - Ways to reach `i - 1`
+  - Plus ways to reach `i - 2`
+- This follows the Fibonacci recurrence:
+  - `dp[i] = dp[i - 1] + dp[i - 2]`
+- Since only the previous two values are needed, two variables are sufficient.
+
+Mental Model:
+- Imagine climbing the staircase one step at a time.
+- To reach the current step, you either:
+  - Take one step from the previous stair.
+  - Take two steps from the stair before that.
+- Keep updating the number of ways using only the last two computed values.
+
+Trigger:
+- Current state depends only on the previous one or two states.
+- DP recurrence resembles the Fibonacci sequence.
+- Space can be optimized by keeping only the required previous states.
+
+Time: O(n)
+
+Space: O(1)
