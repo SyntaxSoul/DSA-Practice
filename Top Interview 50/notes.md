@@ -817,3 +817,39 @@ Trigger:
 Time: O(n)
 
 Space: O(1)
+
+## LC-3: Longest Substring Without Repeating Characters
+
+[Solution](./LC-3-LongestSubstringWithoutRepeatingCharacters.java)
+
+Pattern:
+- Sliding Window
+- HashSet
+- Two Pointers
+
+Mistakes:
+- No major conceptual mistake in the final solution.
+- Learned to shrink the window from the left when a duplicate character is encountered instead of restarting the search.
+- Used the window length `back - front` to track the maximum valid substring.
+
+Key Insights:
+- Maintain a window containing only unique characters.
+- Expand the window by moving `back` when the next character is not already present.
+- When a duplicate appears, remove characters from the `front` until the duplicate is removed.
+- Every character enters and leaves the window at most once, giving O(n) time.
+
+Mental Model:
+- Imagine a movable window containing unique characters.
+- Keep expanding it while the characters remain unique.
+- When a duplicate appears, shrink from the left until the window becomes valid again.
+- Record the largest valid window seen.
+
+Trigger:
+- Need the longest or shortest contiguous substring satisfying a condition.
+- The condition can be maintained while expanding and shrinking a window.
+- Duplicate detection within a current range suggests a Sliding Window + Set.
+
+Time: O(n)
+
+Space: O(k)
+- `k` = number of distinct characters.
