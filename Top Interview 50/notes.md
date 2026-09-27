@@ -853,3 +853,43 @@ Time: O(n)
 
 Space: O(k)
 - `k` = number of distinct characters.
+
+## LC-20: Valid Parentheses
+
+[Solution](./LC-20-ValidParentheses.java)
+
+Pattern:
+- Stack
+- Bracket Matching
+- LIFO (Last In, First Out)
+
+Mistakes:
+- In the first attempt, checked `st.peek() == ch`, which only checks if the same bracket appears twice.
+- `(` and `)` are different characters, so they can never match using `==`.
+- Did not distinguish between the valid pairs `()`, `[]`, and `{}`.
+- Did not verify that a closing bracket matches the most recently opened bracket.
+
+Key Insights:
+- Parentheses validation is about matching pairs, not identical characters.
+- The most recently opened bracket must be closed first, which makes Stack a natural fit.
+- Push opening brackets onto the stack.
+- For a closing bracket, pop the top and check whether the pair matches.
+- The stack must be empty at the end for the string to be valid.
+
+Mental Model:
+- Treat every opening bracket as an unfinished pair.
+- The latest unfinished pair must be completed first.
+- Example: `([{}])`
+  - Push `(`
+  - Push `[`
+  - Push `{`
+  - `}` matches `{`
+  - `]` matches `[`
+  - `)` matches `(`
+
+Trigger:
+- When you see nested brackets or matching pairs, think Stack.
+- If the latest opened item must be handled first, think LIFO.
+
+Time: O(n)
+Space: O(n)
