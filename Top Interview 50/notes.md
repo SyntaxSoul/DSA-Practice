@@ -893,3 +893,36 @@ Trigger:
 
 Time: O(n)
 Space: O(n)
+
+## LC-104: Maximum Depth of Binary Tree
+
+[Solution](./LC-104-MaximumDepthOfBinaryTree.java)
+
+Pattern:
+- Binary Tree
+- Recursion
+- Divide and Conquer
+
+Mistakes:
+- No major mistake in the final solution.
+- Initially stated space as `O(n)`, but the precise complexity is `O(h)`, where `h` is the tree height.
+- `O(n)` is the worst case when the tree is completely skewed.
+
+Key Insights:
+- The depth of a node is `1 + max(leftDepth, rightDepth)`.
+- Base case: `root == null` returns `0`.
+- Recursively calculate the depth of both subtrees.
+- `Math.max()` selects the deeper subtree.
+- Every node is visited exactly once.
+
+Mental Model:
+- Ask: "What is the maximum depth of my left and right subtrees?"
+- Then add `1` for the current node.
+- A leaf has depth `1` because both children return `0`.
+
+Trigger:
+- When a binary tree problem asks for height, depth, maximum/minimum depth, think recursion.
+- If the answer for a node depends on the answers from its children, think bottom-up recursion.
+
+Time: O(n)
+Space: O(h)
