@@ -926,3 +926,37 @@ Trigger:
 
 Time: O(n)
 Space: O(h)
+
+## LC-9: Palindrome Number
+
+[Solution](./LC-9-PalindromeNumber.java)
+
+Pattern:
+- Math
+- Digit Manipulation
+- Two-Pointer Concept
+
+Mistakes:
+- No major mistake in the final solution.
+- The solution avoids converting the number to a String or reversing the entire number.
+
+Key Insights:
+- Negative numbers cannot be palindromes.
+- A non-zero number ending in `0` cannot be a palindrome.
+- Reverse only half of the digits to avoid unnecessary work.
+- Stop when `x <= reversed`, meaning half of the digits have been processed.
+- For even-length numbers, compare `x == reversed`.
+- For odd-length numbers, remove the middle digit using `reversed / 10`.
+
+Mental Model:
+- Split the number into two halves.
+- Reverse the right half while shrinking the original number.
+- Compare the two halves.
+- For odd length, the middle digit does not matter.
+
+Trigger:
+- When checking whether an integer reads the same forward and backward, think digit manipulation.
+- If full reversal is unnecessary, consider reversing only half.
+
+Time: O(log₁₀ n)
+Space: O(1)
