@@ -960,3 +960,38 @@ Trigger:
 
 Time: O(log₁₀ n)
 Space: O(1)
+
+## LC-69: Sqrt(x)
+
+[Solution](./LC-69-SqrtX.java)
+
+Pattern:
+- Binary Search
+- Math
+- Search for Maximum Valid Value
+
+Mistakes:
+- No major mistake in the final solution.
+- Directly using `mid * mid` can cause integer overflow, so the solution uses `mid <= x / mid` instead.
+
+Key Insights:
+- The answer is the largest integer `mid` such that `mid * mid <= x`.
+- Binary search can be used because if `mid` is valid, all smaller values are also valid.
+- If `mid <= x / mid`, then `mid² <= x`, so `mid` can be the answer and we search to the right.
+- If `mid > x / mid`, then `mid² > x`, so we search to the left.
+- `answer` stores the latest valid value because the exact square root may not exist.
+- `x < 2` can be returned directly.
+- `right = x / 2` reduces the initial search range for `x >= 2`.
+
+Mental Model:
+- Think of the problem as finding the **largest valid number**:
+  - `mid² <= x` → valid → move right.
+  - `mid² > x` → invalid → move left.
+- The final `answer` is the largest number whose square does not exceed `x`.
+
+Trigger:
+- When a problem asks for the largest/smallest value satisfying a monotonic condition, think **Binary Search on the Answer**.
+- When checking `mid * mid`, watch for integer overflow and consider division instead.
+
+Time: O(log x)
+Space: O(1)
