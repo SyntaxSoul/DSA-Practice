@@ -995,3 +995,39 @@ Trigger:
 
 Time: O(log x)
 Space: O(1)
+
+## LC-191: Number of 1 Bits
+
+[Solution](./LC-191-NumberOf1Bits.java)
+
+Pattern:
+- Bit Manipulation
+- Set Bit Counting
+
+Mistakes:
+- Initially converted the integer to a binary String and counted the `1`s.
+- The String approach works, but it is unnecessary when the problem is specifically about bits.
+- Initially considered the time as `O(n)`, but Java `int` has a fixed 32-bit size, so the String approach is bounded by 32 iterations.
+
+Key Insights:
+- `n & (n - 1)` removes the rightmost set bit (`1`) from `n`.
+- Each iteration removes exactly one `1` bit.
+- Therefore, the loop runs once for every set bit.
+- Stop when `n == 0`.
+- No extra data structure or binary String is required.
+
+Mental Model:
+- Think of `n & (n - 1)` as a **delete-one-1-bit operation**.
+- Example:
+  - `101100`
+  - `n - 1 = 101011`
+  - `101100 & 101011 = 101000`
+- One `1` disappears.
+- Keep doing this until no `1`s remain.
+
+Trigger:
+- When you need to count set bits (`1`s) in an integer, think `n & (n - 1)`.
+- When a bit manipulation problem asks you to repeatedly remove or process set bits, consider this technique.
+
+Time: O(k), where k is the number of set bits
+Space: O(1)
