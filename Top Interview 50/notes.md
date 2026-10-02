@@ -1031,3 +1031,36 @@ Trigger:
 
 Time: O(k), where k is the number of set bits
 Space: O(1)
+
+## LC-136: Single Number
+
+[Solution](./LC-136-SingleNumber.java)
+
+Pattern:
+- Bit Manipulation
+- XOR
+
+Mistakes:
+- No major mistake in the final solution.
+
+Key Insights:
+- XOR of a number with itself is `0`: `a ^ a = 0`.
+- XOR with `0` keeps the number unchanged: `a ^ 0 = a`.
+- Duplicate numbers cancel each other out.
+- XOR is commutative and associative, so the order of elements does not matter.
+- Starting with `result = 0` allows every number to be XORed into the result.
+- After all duplicates cancel, only the single number remains.
+
+Mental Model:
+- Think of XOR as a **cancellation operation**.
+- Every pair disappears:
+  `a ^ a = 0`
+- The unique number survives:
+  `0 ^ unique = unique`
+
+Trigger:
+- When every number appears twice except one, think **XOR**.
+- When the problem requires `O(1)` extra space and asks for the unique element, look for XOR.
+
+Time: O(n)
+Space: O(1)
