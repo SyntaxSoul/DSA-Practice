@@ -1064,3 +1064,41 @@ Trigger:
 
 Time: O(n)
 Space: O(1)
+
+## LC-530: Minimum Absolute Difference in BST
+
+[Solution](./LC-530-MinimumAbsoluteDifferenceInBST.java)
+
+Pattern:
+- Binary Search Tree
+- Inorder Traversal
+- Recursion
+- Track Previous Value
+
+Mistakes:
+- No major mistake in the final solution.
+
+Key Insights:
+- Inorder traversal of a BST visits values in sorted order.
+- Because the values are sorted, the minimum absolute difference can only occur between adjacent values.
+- Track the previous visited value using `prev`.
+- For every node after the first, calculate `root.val - prev`.
+- Update `min` with the smaller difference.
+- The first visited value has no previous value, so it is skipped using `prev != -1`.
+
+Mental Model:
+- Convert the BST mentally into a sorted sequence using inorder traversal.
+- Example:
+  `1 → 3 → 6 → 8`
+- Only compare neighbors:
+  - `3 - 1`
+  - `6 - 3`
+  - `8 - 6`
+- The smallest difference among adjacent values is the answer.
+
+Trigger:
+- When a BST problem asks for minimum difference, sorted order, or closest values, think **Inorder Traversal**.
+- When comparing neighboring values during traversal, track the **previous value**.
+
+Time: O(n)
+Space: O(h)
