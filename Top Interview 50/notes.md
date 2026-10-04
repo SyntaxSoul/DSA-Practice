@@ -1102,3 +1102,38 @@ Trigger:
 
 Time: O(n)
 Space: O(h)
+
+## LC-100: Same Tree
+
+[Solution](./LC-100-SameTree.java)
+
+Pattern:
+- Binary Tree
+- Recursion
+- Tree Traversal
+
+Mistakes:
+- No major mistake in the final solution.
+
+Key Insights:
+- Two trees are the same only when their structure and node values are identical.
+- If both nodes are `null`, that part of both trees is identical.
+- If one node is `null`, or their values differ, the trees are different.
+- After checking the current nodes, recursively compare their left and right subtrees.
+- Both subtree comparisons must be `true`, so use `&&`.
+
+Mental Model:
+- Compare the two trees **node by node at the same position**.
+- For every pair of nodes:
+  - Both `null` → same.
+  - One `null` → different.
+  - Different values → different.
+  - Otherwise → compare left children and right children.
+- Think of recursion as walking through both trees simultaneously.
+
+Trigger:
+- When comparing two binary trees for identical **structure and values**, think recursive tree traversal.
+- When both inputs have the same tree structure and need to be compared position-by-position, compare corresponding nodes recursively.
+
+Time: O(n)
+Space: O(h)
