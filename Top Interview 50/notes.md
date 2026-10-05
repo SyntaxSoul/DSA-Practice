@@ -1137,3 +1137,40 @@ Trigger:
 
 Time: O(n)
 Space: O(h)
+
+## LC-74: Search a 2D Matrix
+
+[Solution](./LC-74-SearchA2DMatrix.java)
+
+Pattern:
+- Binary Search
+- 2D Matrix
+- Virtual 1D Array
+
+Mistakes:
+- No major mistake in the final solution.
+
+Key Insights:
+- The matrix can be treated as a single sorted 1D array.
+- Instead of creating a new array, convert a virtual 1D index into row and column.
+- `row = index / cols`
+- `col = index % cols`
+- Search range is from `0` to `rows * cols - 1`.
+- The `firstTrueIndex` approach finds the first element greater than or equal to `target`.
+- After finding it, check whether that element is exactly equal to `target`.
+
+Mental Model:
+- Imagine the matrix flattened into one sorted array:
+  `1 3 5 7 | 10 11 16 20 | 23 30 34 60`
+- Binary search using a virtual index.
+- Convert that index back into the matrix:
+  - Division gives the row.
+  - Modulo gives the column.
+- No actual flattening is required.
+
+Trigger:
+- When a matrix is sorted row-by-row and each row starts after the previous row ends, think **Binary Search**.
+- When a 2D matrix behaves like one continuous sorted array, use **virtual 1D indexing**.
+
+Time: O(log(m × n))
+Space: O(1)
