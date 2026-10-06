@@ -1174,3 +1174,41 @@ Trigger:
 
 Time: O(log(m × n))
 Space: O(1)
+
+## LC-6: Zigzag Conversion
+
+[Solution](./LC-6-ZigzagConversion.java)
+
+Pattern:
+- String Traversal
+- Pattern / Cycle
+- Index Manipulation
+
+Mistakes:
+- Tried to calculate the index jump manually using `numRows + 1` and `numRows - 1`.
+- The jump pattern is not the same for every row.
+- The approach works only for specific row counts and does not generalize to arbitrary `numRows`.
+- Multiple separate `while` loops make the solution difficult to scale beyond the manually handled rows.
+- Did not account for the diagonal characters in the middle rows.
+
+Key Insights:
+- Zigzag conversion follows a repeating cycle.
+- The cycle length is `2 * numRows - 2`.
+- Each row has its own vertical and diagonal positions within that cycle.
+- Instead of manually calculating jumps for individual rows, iterate through every row and calculate its positions.
+- The first and last rows only contain vertical characters.
+- Middle rows contain both vertical and diagonal characters.
+
+Mental Model:
+- Think of the zigzag as repeating cycles rather than individual characters.
+- For `numRows = 4`, one complete cycle contains:
+  `2 × 4 - 2 = 6` characters.
+- Every row can then determine its characters using the same cycle-based formula.
+- The key is to find a **general pattern**, rather than hardcoding index jumps for each row.
+
+Trigger:
+- When a string follows a repeating positional pattern, look for a **cycle**.
+- When index jumps change depending on the row or position, avoid hardcoding separate cases and derive a general formula.
+
+Time: O(n)
+Space: O(n)
