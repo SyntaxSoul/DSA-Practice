@@ -1212,3 +1212,38 @@ Trigger:
 
 Time: O(n)
 Space: O(n)
+
+## LC-637: Average of Levels in Binary Tree
+
+[Solution](./LC-637-AverageOfLevelsInBinaryTree.java)
+
+Pattern:
+- Binary Tree
+- BFS
+- Level Order Traversal
+- Queue
+
+Mistakes:
+- No major mistake in the final solution.
+
+Key Insights:
+- BFS naturally processes a binary tree level by level.
+- `queue.size()` at the start of each iteration gives the number of nodes in the current level.
+- Store this value in `levelSize` before adding the children of the current level.
+- Process exactly `levelSize` nodes to calculate that level's sum.
+- Add the left and right children to the queue so they are processed in the next level.
+- Average of a level is `levelSum / levelSize`.
+
+Mental Model:
+- The queue represents the next nodes waiting to be processed.
+- At the start of each loop, freeze `queue.size()` as the current level size.
+- Process those nodes only.
+- Their children join the queue for the next level.
+- Repeat until the queue is empty.
+
+Trigger:
+- When a binary tree problem asks for values, sums, averages, or other calculations **level by level**, think **BFS + Queue**.
+- When you need to separate one tree level from the next, use `queue.size()`.
+
+Time: O(n)
+Space: O(w)
