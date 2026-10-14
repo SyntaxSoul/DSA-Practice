@@ -59,3 +59,42 @@ Trigger:
 
 Time: O(n)
 Space: O(1) auxiliary
+
+## SQL-1148: Article Views I
+
+[Solution](./SQL-1148-ArticleViewsI.sql)
+
+Pattern:
+- SELECT
+- WHERE Filtering
+- DISTINCT
+- ORDER BY
+- Column Aliasing
+
+Mistakes:
+- Initially used `==` for equality instead of MySQL's `=`.
+- Did not account for duplicate author IDs in the result.
+- Needed `DISTINCT` to return each author ID only once.
+- Needed `AS id` to match the required output column name.
+
+Key Insights:
+- `WHERE author_id = viewer_id` selects rows where authors viewed their own articles.
+- `DISTINCT` removes duplicate values from the result.
+- `AS id` renames the output column to `id`.
+- `ORDER BY author_id ASC` sorts author IDs in ascending order.
+- SQL does not remove duplicates automatically.
+
+Mental Model:
+- First, filter rows where the author and viewer are the same.
+- Next, keep only unique author IDs.
+- Rename the output column to `id`.
+- Finally, sort the IDs in ascending order.
+
+Trigger:
+- When a SQL problem asks for unique results, think `DISTINCT`.
+- When two columns must have equal values, use `=`.
+- When the output requires a specific column name, use `AS`.
+- When results must be sorted, use `ORDER BY`.
+
+Time: O(n log n) typically, depending on the execution plan and indexes
+Space: O(n) worst case for duplicate elimination and sorting
