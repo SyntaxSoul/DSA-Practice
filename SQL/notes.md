@@ -98,3 +98,36 @@ Trigger:
 
 Time: O(n log n) typically, depending on the execution plan and indexes
 Space: O(n) worst case for duplicate elimination and sorting
+
+## SQL-1683: Invalid Tweets
+
+[Solution](./SQL-1683-InvalidTweets.sql)
+
+Pattern:
+- SELECT
+- WHERE Filtering
+- String Functions
+- Character Length
+
+Mistakes:
+- No major mistake in the final query.
+
+Key Insights:
+- `CHAR_LENGTH(content)` returns the number of characters in a string.
+- `WHERE CHAR_LENGTH(content) > 15` filters tweets containing more than 15 characters.
+- `CHAR_LENGTH()` is appropriate when the requirement is based on character count.
+- `LENGTH()` counts bytes rather than characters in MySQL, which can differ for multibyte characters.
+
+Mental Model:
+- Examine each tweet's content.
+- Count its characters using `CHAR_LENGTH()`.
+- If the count exceeds 15, return its `tweet_id`.
+
+Trigger:
+- When a SQL problem imposes a character limit on a string, think `CHAR_LENGTH()`.
+- When filtering rows based on a calculated condition, use `WHERE`.
+
+Time: O(n × L)
+Space: O(1) auxiliary
+
+Where `n` is the number of tweets and `L` is the average content length.
