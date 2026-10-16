@@ -131,3 +131,39 @@ Time: O(n × L)
 Space: O(1) auxiliary
 
 Where `n` is the number of tweets and `L` is the average content length.
+
+## SQL-620: Not Boring Movies
+
+[Solution](./SQL-620-NotBoringMovies.sql)
+
+Pattern:
+- SELECT
+- WHERE Filtering
+- Modulo Operator
+- ORDER BY
+- Logical Operators
+
+Mistakes:
+- No major mistake in the final query.
+
+Key Insights:
+- `id % 2 = 1` selects rows with odd IDs.
+- `%` is the modulo operator, which returns the remainder after division.
+- `description <> 'boring'` excludes rows where the description is `boring`.
+- `<>` means "not equal to" in SQL.
+- `AND` requires both conditions to be true.
+- `ORDER BY rating DESC` sorts results by rating from highest to lowest.
+- `SELECT *` returns all columns.
+
+Mental Model:
+- First, select movies with odd IDs.
+- Exclude movies whose description is `boring`.
+- Sort the remaining movies by rating in descending order.
+
+Trigger:
+- When filtering odd or even IDs, think modulo (`%`).
+- When excluding a specific value, use `<>` or `!=`.
+- When results must be sorted from highest to lowest, use `ORDER BY ... DESC`.
+
+Time: O(n log n) typically, due to filtering and sorting
+Space: O(n) worst case for sorting, depending on the execution plan
