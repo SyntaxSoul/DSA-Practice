@@ -167,3 +167,45 @@ Trigger:
 
 Time: O(n log n) typically, due to filtering and sorting
 Space: O(n) worst case for sorting, depending on the execution plan
+
+## SQL- average selling price
+
+[Solution](./LC-1251-AverageSellingPrice.sql)
+
+Pattern:
+- LEFT JOIN
+- Aggregate Functions
+- GROUP BY
+- Date Range Filtering
+- NULL Handling
+- Rounding
+
+Mistakes:
+- No major mistake in the final query.
+- Important: the purchase-date condition belongs in the `ON` clause to preserve products with no matching sales.
+- Dividing by `SUM(u.units)` calculates a weighted average, not a simple average of prices.
+
+Key Insights:
+- `LEFT JOIN` keeps every product from `Prices`, even when no units were sold during a price period.
+- `BETWEEN p.start_date AND p.end_date` matches purchases to the applicable price period, including both endpoints.
+- `p.price * u.units` calculates the revenue contributed by each matching sale.
+- `SUM(p.price * u.units) / SUM(u.units)` calculates the weighted average selling price.
+- `GROUP BY p.product_id` produces one result per product.
+- `COALESCE(..., 0)` returns `0` when the average is `NULL` because no matching units were sold.
+- `ROUND(..., 2)` rounds the result to two decimal places.
+
+Mental Model:
+- Match each purchase to the price valid on its purchase date.
+- Calculate revenue for each matching sale: `price × units`.
+- Add all revenue and divide by the total units sold.
+- If no units were sold, return `0`.
+- Round the final average to two decimal places.
+
+Trigger:
+- When prices vary by date and sales have different quantities, think **weighted average**.
+- When every product must appear even without matching sales, think `LEFT JOIN`.
+- When joining on a date range, put the range condition in `ON` if unmatched left-side rows must be preserved.
+- When aggregate calculations can produce `NULL`, consider `COALESCE()`.
+
+Time: Depends on table sizes, indexes, and the execution plan
+Space: Depends on the execution plan and intermediate results
